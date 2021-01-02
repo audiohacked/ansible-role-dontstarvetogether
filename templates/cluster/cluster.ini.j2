@@ -1,0 +1,33 @@
+[MISC]
+max_snapshots = {{ dst_max_snapshots }}
+console_enabled = {{ dst_console_enabled | lower }}
+
+[SHARD]
+shard_enable = {{ dst_shard_enable | lower }}
+bind_ip = {{ dst_shard_bind_ip }} # 127.0.0.1
+master_ip = {{ dst_shard_master_ip }}
+master_port = {{ dst_shard_master_port }} # 11001
+cluster_key = {{ dst_shard_cluster_key }}
+
+[STEAM]
+steam_group_only = false
+steam_group_id = 0
+steam_group_admins = false
+
+[NETWORK]
+offline_server = {{ dst_offline_server | lower }}
+tick_rate = {{ dst_tick_rate }}
+whitelist_slots = {{ dst_whitelist_slots }}
+cluster_password = {{ dst_server_password }}
+cluster_name = {{ dst_server_name }}
+cluster_description = {{ dst_server_description }}
+lan_only_cluster = false
+cluster_intention = {{ dst_server_intention }}
+autosaver_enabled = {{ dst_enable_autosaver | lower }}
+
+[GAMEPLAY]
+max_players = {{ dst_max_players }}
+pvp = {{ dst_pvp | lower }}
+game_mode = {{ dst_game_mode }}
+pause_when_empty = {{ dst_pause_when_empty | lower }}
+vote_enabled = {{ dst_vote_enabled | lower }}

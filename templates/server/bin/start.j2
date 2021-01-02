@@ -17,10 +17,10 @@ NAME="Don't Starve Together {{ dst_shard_name }} server"
 SCREENREF="DST"
 
 # Should be the same as the dedicated server's install directory
-BINARYPATH="{{ dst_install_dir }}bin"
+BINARYPATH="{{ dst_install_dir }}/bin"
 BINARYNAME="dontstarve_dedicated_server_nullrenderer"
 PIDFILE="$BINARYPATH/dst-{{ dst_shard_name }}.pid"
-OPTS="-conf_dir {{ dst_shard_name }}"
+OPTS="-persistent_storage_root {{ dst_persistent_storage_root }} -conf_dir {{ dst_conf_dir }} -cluster {{ dst_cluster_name }} -shard {{ dst_shard_name }}"
 
 cd "$BINARYPATH"
 

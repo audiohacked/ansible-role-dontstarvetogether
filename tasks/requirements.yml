@@ -1,11 +1,11 @@
 ---
 
-- stat: path={{ steamcmd_directory }}steamcmd.sh
+- stat: path={{ steamcmd_directory }}/steamcmd.sh
   register: steamcmd
 
 - name: check if steamcmd exists
   fail:
-    msg: unable to find {{ steamcmd_directory }}steamcmd.sh, you may uses lutangar/ansible-role-steamcmd to set it up
+    msg: unable to find {{ steamcmd_directory }}/steamcmd.sh, you may uses lutangar/ansible-role-steamcmd to set it up
   when: not steamcmd.stat.exists
 
 - name: Check if is the server token is set.

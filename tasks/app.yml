@@ -1,19 +1,24 @@
 ---
 
-- name: ensures {{ dst_install_dir }}bin/ directory exists
+- name: ensures {{ dst_install_dir }}/bin/ directory exists
   file:
-    path: '{{ dst_install_dir }}bin/'
-    state: directory
+    path: '{{ dst_install_dir }}/bin/'
+    owner: '{{ steamcmd_user }}'
+    group: '{{ steamcmd_user }}'
+    mode: '0755'
     recurse: yes
+    state: directory
 
 - name: create update script
   template:
     src: update.j2
-    dest: '{{ dst_install_dir }}bin/update'
-    mode: 0755
+    dest: '{{ dst_install_dir }}/bin/update'
+    owner: '{{ steamcmd_user }}'
+    group: '{{ steamcmd_user }}'
+    mode: '0755'
 
 - name: install or update app
-  command: '{{ steamcmd_directory }}steamcmd.sh +runscript {{ dst_install_dir }}bin/update'
-  async: 180
+  command: '{{ steamcmd_directory }}/steamcmd.sh +runscript {{ dst_install_dir }}/bin/update'
+  async: 300
   poll: 5
   register: app_update

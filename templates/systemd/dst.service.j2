@@ -1,0 +1,16 @@
+[Unit]
+Description=Don't Starve Together Server Shard
+#Wants=
+After=network.target
+
+[Service]
+User={{ steamcmd_user }}
+PIDFIle={{ dst_install_dir }}/bin/dst-{{ dst_shard_name }}.pid
+EnvironmentFile={{ dst_install_dir }}/bin/dst-service-settings.cfg
+ExecStart={{ dst_install_dir }}/bin/dontstarve_dedicated_server_nullrenderer $OPTS
+#ExecReload=kill -HUP $MAINPID
+ExecStop=kill $MAINPID
+KillMode=process
+
+[Install]
+WatedBy=multi-user.target

@@ -1,5 +1,4 @@
 ---
-
 - stat: path={{ steamcmd_directory }}/steamcmd.sh
   register: steamcmd
 
@@ -10,5 +9,5 @@
 
 - name: Check if is the server token is set.
   fail:
-    msg: you must set the dst_server_token, you can generate one by entering `TheNet:GenerateServerToken()` in the Don't Starve Toghether console
-  when: not dst_server_token
+    msg: you must set the dst_cluster_token, you can generate one by entering `TheNet:GenerateServerToken()` in the Don't Starve Together console
+  when: not dst_cluster_token

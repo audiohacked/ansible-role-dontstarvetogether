@@ -20,7 +20,7 @@ SCREENREF="DST"
 BINARYPATH="{{ dst_install_dir }}/bin"
 BINARYNAME="dontstarve_dedicated_server_nullrenderer"
 PIDFILE="$BINARYPATH/dst-{{ dst_shard_name }}.pid"
-OPTS="-persistent_storage_root {{ dst_persistent_storage_root }} -conf_dir {{ dst_conf_dir }} -cluster {{ dst_cluster_name }} -shard {{ dst_shard_name }}"
+OPTS="-persistent_storage_root {{ dst_persistent_storage_root }} -conf_dir {{ dst_conf_dir }} -cluster {{ dst_cluster_string }} -shard {{ dst_shard_name }}"
 
 cd "$BINARYPATH"
 

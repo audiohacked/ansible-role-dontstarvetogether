@@ -1,16 +1,17 @@
 ---
-
-- name: copy server init script into place
+- name: copy service into place
   template:
-    src: systemd/dst.service.j2
-    dest: /etc/systemd/system/dst-{{ dst_shard_name }}.service
+    src: saas/dst.service.j2
+    dest: /etc/systemd/system/dst-{{ dst_shard_name | lower }}.service
     owner: '{{ steamcmd_user }}'
     group: '{{ steamcmd_user }}'
     mode: '0644'
 
 - name: create dst-service-settings.cfg
   copy:
-    content: OPTS="-persistent_storage_root {{ dst_persistent_storage_root }} -conf_dir {{ dst_conf_dir }} -cluster {{ dst_cluster_name }} -shard {{ dst_shard_name }}"
+    content: |
+      SCREENREF="DST"
+      OPTS="-persistent_storage_root {{ dst_persistent_storage_root }} -conf_dir {{ dst_conf_dir }} -cluster {{ dst_cluster_name }} -shard {{ dst_shard_name }}"
     dest: '{{ dst_install_dir }}/bin/dst-service-settings.cfg'
     owner: '{{ steamcmd_user }}'
     group: '{{ steamcmd_user }}'

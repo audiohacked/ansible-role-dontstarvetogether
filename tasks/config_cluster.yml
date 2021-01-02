@@ -1,5 +1,4 @@
 ---
-
 - name: ensures that server directory `{{ dst_persistent_storage_root }}/{{ dst_conf_dir }}/{{ dst_cluster_name }}/{{ dst_shard_name }}/` exists
   file:
     path: '{{ dst_persistent_storage_root }}/{{ dst_conf_dir }}/{{ dst_cluster_name }}/{{ dst_shard_name }}'
@@ -21,22 +20,6 @@
   template:
     src: cluster/cluster.ini.j2
     dest: '{{ dst_persistent_storage_root }}/{{ dst_conf_dir }}/{{ dst_cluster_name }}/cluster.ini'
-    owner: '{{ steamcmd_user }}'
-    group: '{{ steamcmd_user }}'
-    mode: '0644'
-
-- name: creates shard settings
-  template:
-    src: server/settings.ini.j2
-    dest: '{{ dst_persistent_storage_root }}/{{ dst_conf_dir }}/{{ dst_cluster_name }}/{{ dst_shard_name }}/settings.ini'
-    owner: '{{ steamcmd_user }}'
-    group: '{{ steamcmd_user }}'
-    mode: '0644'
-
-- name: creates world generation file.
-  template:
-    src: server/worldgenoverride.lua.j2
-    dest: '{{ dst_persistent_storage_root }}/{{ dst_conf_dir }}/{{ dst_cluster_name }}/{{ dst_shard_name }}/worldgenoverride.lua'
     owner: '{{ steamcmd_user }}'
     group: '{{ steamcmd_user }}'
     mode: '0644'

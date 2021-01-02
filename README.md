@@ -31,19 +31,19 @@ steamcmd_steam:
 # app wide configuration
 dst_app_id: 343050
 dst_install_dir: '{{ steamcmd_user_home }}apps/dontstarvetogether/'
-dst_server_token: ~ # proves ownership of Don’t Starve Together
+dst_cluster_token: ~ # proves ownership of Don’t Starve Together
 
 # world
 dst_world_preset: SURVIVAL_TOGETHER
 
 # network
 dst_saas: true
-dst_server_name: "[Host]'s World"
-dst_server_description: Once uppon a time in a quite hostile world.
-dst_server_port: 10999
-dst_server_password: password
-dst_server_save_slot: ~  # which save slot should the dedicated server load
-dst_server_intention: cooperative
+dst_cluster_name: "[Host]'s World"
+dst_cluster_description: Once uppon a time in a quite hostile world.
+dst_cluster_port: 10999
+dst_cluster_password: password
+dst_cluster_save_slot: ~  # which save slot should the dedicated server load
+dst_cluster_intention: cooperative
 dst_max_players: 6 # 1..64
 dst_pvp: false # true | false
 dst_game_mode: survival # endless | survival | wilderness
@@ -78,7 +78,7 @@ Setup a classical survival Don't Starve Together server:
 ```
 - hosts: myhostname
   vars:
-    dst_server_token: myUniqueServerToken
+    dst_cluster_token: myUniqueServerToken
   roles:
     - lutangar.dontstarvetogether
 ```
@@ -87,10 +87,10 @@ Setup a classical **overworld server** plus a **caves server** for spelunking:
 ```
 - hosts: myhostname
   vars:
-    dst_server_token: myUniqueServerToken
+    dst_cluster_token: myUniqueServerToken
   roles:
     - { role: lutangar.dontstarvetogether, dst_shard_enable: true, dst_shard_is_master: true }
-    - { role: lutangar.dontstarvetogether, dst_shard_enable: true, dst_world_preset: DST_CAVES, dst_server_port: 11000, dst_shard_name: caves, master_ip: 127.0.0.1 }
+    - { role: lutangar.dontstarvetogether, dst_shard_enable: true, dst_world_preset: DST_CAVES, dst_cluster_port: 11000, dst_shard_name: caves, master_ip: 127.0.0.1 }
 ```
 
 > Remember there's only one master server, and other servers must set the master's IP and a different port number.

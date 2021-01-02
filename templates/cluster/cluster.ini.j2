@@ -10,23 +10,27 @@ master_port = {{ dst_shard_master_port }}
 cluster_key = {{ dst_shard_cluster_key }}
 
 [STEAM]
-steam_group_only = false
-steam_group_id = 0
-steam_group_admins = false
+steam_group_only = {{ dst_steam_group_only | lower }}
+steam_group_id = {{ dst_steam_group_id }}
+steam_group_admins = {{ dst_steam_group_admins | lower }}
 
 [NETWORK]
 offline_server = {{ dst_offline_server | lower }}
 tick_rate = {{ dst_tick_rate }}
+{% if dst_shard_is_master %}
 whitelist_slots = {{ dst_whitelist_slots }}
 cluster_password = {{ dst_cluster_password }}
 cluster_name = {{ dst_cluster_string }}
 cluster_description = {{ dst_cluster_description }}
 lan_only_cluster = false
 cluster_intention = {{ dst_cluster_intention }}
+{% endif %}
 autosaver_enabled = {{ dst_enable_autosaver | lower }}
 
 [GAMEPLAY]
+{% if dst_shard_is_master %}
 max_players = {{ dst_max_players }}
+{% endif %}
 pvp = {{ dst_pvp | lower }}
 game_mode = {{ dst_game_mode }}
 pause_when_empty = {{ dst_pause_when_empty | lower }}

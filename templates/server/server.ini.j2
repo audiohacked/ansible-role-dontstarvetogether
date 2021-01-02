@@ -2,7 +2,7 @@
 {% if dst_shard_enable %}
 is_master = {{ dst_shard_is_master | lower }}
 {% endif %}
-{% if dst_shard_enable and dst_shard_is_master %}
+{% if dst_shard_enable and not dst_shard_is_master %}
 name = {{ dst_shard_name }}
 {% endif %}
 id = {{ dst_shard_id }}
@@ -12,4 +12,4 @@ authentication_port = {{ dst_steam_auth_port }}
 master_server_port = {{ dst_steam_master_server_port }}
 
 [NETWORK]
-server_port = {{ dst_cluster_port }}
+server_port = {{ dst_server_port }}

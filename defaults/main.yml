@@ -10,6 +10,9 @@ steamcmd_steam:
 # steam
 dst_steam_auth_port: 8766
 dst_steam_master_server_port: 27016
+dst_steam_group_only: false
+dst_steam_group_id: 0
+dst_steam_group_admins: false
 
 # app wide configuration
 dst_saas: true
@@ -40,6 +43,7 @@ dst_shard_bind_ip: '127.0.0.1'
 dst_shard_id: "{{ dst_shard_name | to_uuid }}"
 
 # Other Settings
+dst_server_port: 10999
 dst_world_preset: SURVIVAL_TOGETHER
 dst_console_enabled: true
 dst_max_players: 16 # 1..64

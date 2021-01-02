@@ -4,13 +4,14 @@ Description=Don't Starve Together Server Shard
 After=network.target
 
 [Service]
+Type=forking
 User={{ steamcmd_user }}
-PIDFIle={{ dst_install_dir }}/bin/dst-{{ dst_shard_name }}.pid
+WorkingDirectory={{ dst_install_dir }}/bin
 EnvironmentFile={{ dst_install_dir }}/bin/dst-service-settings.cfg
-ExecStart={{ dst_install_dir }}/bin/dontstarve_dedicated_server_nullrenderer $OPTS
-#ExecReload=kill -HUP $MAINPID
-ExecStop=kill $MAINPID
-KillMode=process
+ExecStart=/usr/bin/screen -dmS DST {{ dst_install_dir }}/bin/dontstarve_dedicated_server_nullrenderer $OPTS
+#ExecStop=kill $MAINPID
+#KillMode=process
+#PIDFIle={{ dst_install_dir }}/bin/dst-{{ dst_shard_name }}.pid
 
 [Install]
 WantedBy=multi-user.target
